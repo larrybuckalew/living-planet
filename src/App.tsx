@@ -25,7 +25,7 @@ function ScrollManager() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <ScrollManager />
       <div className="min-h-screen bg-forest font-body text-fg">
         <Header />
