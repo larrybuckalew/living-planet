@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { collections, getPlace } from '@/data/places'
 import { satelliteCrop } from '@/lib/globe'
+import { assetUrl } from '@/lib/assets'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
@@ -45,8 +46,11 @@ export default function Journeys() {
                       key={stop.id}
                       role="img"
                       aria-label={`Satellite view of ${stop.name}`}
-                      className="h-full w-full bg-[url('/textures-opt/earth-blue-marble.webp')] bg-no-repeat transition-transform duration-700 group-hover:scale-105"
-                      style={satelliteCrop(stop.lat, stop.lon, 8)}
+                      className="h-full w-full bg-no-repeat transition-transform duration-700 group-hover:scale-105"
+                      style={{
+                        backgroundImage: `url(${assetUrl('textures-opt/earth-blue-marble.webp')})`,
+                        ...satelliteCrop(stop.lat, stop.lon, 8),
+                      }}
                     />
                   ))}
                 </div>

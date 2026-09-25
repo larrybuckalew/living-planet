@@ -4,7 +4,8 @@ import tailwindcss from '@tailwindcss/vite'
 import { fileURLToPath, URL } from 'node:url'
 
 // GitHub Pages serves the app under /living-planet/; Verdent and local dev serve at root.
-const base = process.env.GITHUB_PAGES === 'true' ? '/living-planet/' : '/'
+const usePagesBase = /^(true|1)$/i.test((process.env.GITHUB_PAGES ?? '').trim())
+const base = usePagesBase ? '/living-planet/' : '/'
 
 export default defineConfig({
   base,

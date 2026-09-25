@@ -4,15 +4,16 @@ import { Suspense, useEffect, useLayoutEffect, useMemo, useRef, useState } from 
 import * as THREE from 'three'
 import { latLonToVec3 } from '@/lib/globe'
 import { sunDirection } from '@/lib/sun'
+import { assetUrl } from '@/lib/assets'
 
 export type EarthFocus = { lat: number; lon: number }
 
 const TEXTURES = {
-  day: '/textures-opt/earth-blue-marble.webp',
-  night: '/textures-opt/earth-night.webp',
-  bump: '/textures-opt/earth-topology.webp',
-  specular: '/textures-opt/earth-water.webp',
-  clouds: '/textures-opt/clouds.webp',
+  day: assetUrl('textures-opt/earth-blue-marble.webp'),
+  night: assetUrl('textures-opt/earth-night.webp'),
+  bump: assetUrl('textures-opt/earth-topology.webp'),
+  specular: assetUrl('textures-opt/earth-water.webp'),
+  clouds: assetUrl('textures-opt/clouds.webp'),
 } as const
 
 const RADIUS = 1.6

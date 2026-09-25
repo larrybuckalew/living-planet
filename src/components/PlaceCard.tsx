@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import type { Place } from '@/data/places'
 import { satelliteCrop } from '@/lib/globe'
+import { assetUrl } from '@/lib/assets'
 
 export default function PlaceCard({ place }: { place: Place }) {
   return (
@@ -11,8 +12,11 @@ export default function PlaceCard({ place }: { place: Place }) {
       <div
         role="img"
         aria-label={`Satellite view of ${place.name}`}
-        className="aspect-[4/3] w-full bg-[url('/textures-opt/earth-blue-marble.webp')] bg-no-repeat transition-transform duration-700 group-hover:scale-105"
-        style={satelliteCrop(place.lat, place.lon)}
+        className="aspect-[4/3] w-full bg-no-repeat transition-transform duration-700 group-hover:scale-105"
+        style={{
+          backgroundImage: `url(${assetUrl('textures-opt/earth-blue-marble.webp')})`,
+          ...satelliteCrop(place.lat, place.lon),
+        }}
       />
       <div className="flex flex-1 flex-col px-5 py-4">
         <div className="flex items-baseline justify-between gap-4">
